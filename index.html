@@ -19,7 +19,7 @@
             <div class="slider-wrapper" tabindex="0">
 
                 <div class="main-items">
-                    <div class="item">
+                    <div @mouseover="mouseOverIn()" @mouseout="mouseOverOut()" class="item">
                         <img :src="slides[itemActive].image" :alt="slides[itemActive].title" />
                         <div class="text">
                             <h3>{{slides[itemActive].title}}</h3>

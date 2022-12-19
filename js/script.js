@@ -38,6 +38,12 @@ createApp({
             itemActive: 3,
 
             intervalID: '',
+
+            checkPlay: false,
+
+            checkReverse: false,
+
+            checkpause: true,
         }
     },
     methods: {
@@ -56,15 +62,35 @@ createApp({
         autoplay() {
             clearInterval(this.intervalID);
             this.intervalID = setInterval (() => {this.backwardsSlides()}, 1000);
+            this.checkPlay = true;
+            this.checkReverse = false;
+            this.checkpause = false;
         },
 
         reversePlay() {
             clearInterval(this.intervalID);
             this.intervalID = setInterval (() => {this.forwardSlides()}, 1000);
+            this.checkPlay = false;
+            this.checkReverse = true;
+            this.checkpause = false;
         },
 
         pauseAutoplay() {
             clearInterval(this.intervalID);
+            this.checkpause = true;
+        },
+
+        mouseOverIn() {
+            clearInterval(this.intervalID);
+        },
+
+        mouseOverOut() {
+            if (this.checkPlay && this.checkpause == false) {
+                this.autoplay()
+            }
+            else if (this.checkReverse && this.checkpause == false) {
+                this.reversePlay()
+            }
         }
     }
 }).mount('#app')
