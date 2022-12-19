@@ -7,8 +7,20 @@
 .container {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.slider-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-items {
+    display: flex;
+    flex-direction: column;
 }
 
 .item {
@@ -30,10 +42,12 @@
     bottom: 20px;
     text-align: right;
     color: white;
+    text-shadow: 0px 0px 5px black;
 }
 
 .thumbs {
-    float: left;
+    align-self: flex-start;
+    width: 230px;
     height: 400px;
     background: #000;
     position: relative;
@@ -42,6 +56,7 @@
 .thumb {
     height: calc(100% / 5);
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .thumb img {
@@ -51,55 +66,69 @@
 }
 
 .thumb.active {
-    border: 2px solid #ccc;
+    border: 3px solid #ccc;
     opacity: 1;
 }
 
 .prev, .next {
-    width: 20px;
-    height: 20px;
-    margin: 10px 0;
+    width: 30px;
+    height: 30px;
+    margin: 5px 0;
     border-radius: 50%;
-    background: #ccc;
+    background: #cccccc9e;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     cursor: pointer;
     z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
 
 .next {
     bottom: 0;
 }
 
-/*
-EXTRA: in questo esempio gli accordion vengono creati
-usando 2 bordi di un quadratino ruotato di 45 gradi
-In una versione base si possono usare delle icone
-oppure i caratteri ∧ (&and;) e ∨ (&or;)
- */
-.prev::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(-45deg);
+.prev:hover, .next:hover {
+    background-color: #ccc;
 }
 
-.next::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(135deg);
+.circles-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.circle{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(174, 174, 174, 0.509);
+    margin: 10px;
+    cursor: pointer;
+}
+
+.circle.active, .circle:hover {
+    background-color: rgba(174, 174, 174, 1); 
+}
+
+button {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    background-color: blue;
+    border-radius: 10px;
+    border: solid 3px yellowgreen;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+button:hover {
+    background-color: aqua;
+    color: blue;
+    border: solid 3px blueviolet;
 }
