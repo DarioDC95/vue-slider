@@ -46,6 +46,9 @@ createApp({
             checkpause: true,
         }
     },
+    created() {
+        this.autoplay();
+    },
     methods: {
         backwardsSlides() {
             (this.itemActive < (this.slides.length - 1)) ? this.itemActive++ : this.itemActive = 0;
